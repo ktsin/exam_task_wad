@@ -38,8 +38,9 @@ urlpatterns = [
     # User manipulation
 
     path('users/', main_app.views.layout_example),
-    path('register/', main_app.views.layout_example),
+    path('register/', main_app.views.register_user),
     path('login/', main_app.views.auth_user),
     path('logout/', main_app.views.layout_example),
+    path('profile/', main_app.views.profile),
 
 ]

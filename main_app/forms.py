@@ -17,7 +17,8 @@ class AuthorizeForm(ModelForm):
 
 class RegisterForm(ModelForm):
     class Meta:
-        model = User
-        fields = ['username', 'password']
+        model = SystemUser
+        fields = ['username', 'email', 'password']
         labels = {'username': 'Имя пользователя',
-                  'password': 'Пароль'}
+                  'password': 'Пароль',
+                  'email': 'Почта'}

@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -44,6 +45,7 @@ def register_user(request):
         return render(request, 'users/register.html', {"form": form, 'title': 'Регистрация'})
     else:
         data = {
+            'email': request.POST.get("email"),
             'name': request.POST.get("username"),
             'password': request.POST.get("password")}
         if SystemUser.objects.filter(username=data['name']).exists():
@@ -51,7 +53,12 @@ def register_user(request):
             form.add_error('username', 'Пользователь с данным логином уже существует')
             return render(request, 'users/register.html', {'form': form, 'title': 'Регистрация'})
         else:
-            SystemUser.objects.create_user(data['name'], data['password'])
-            user = authenticate(request, username=data['name'], password=data['password'])
+            user = SystemUser.objects.create_user(data['name'], data['password'])
             login(request, user)
             return redirect('/profile/')
+
+
+def profile(request):
+    usrn = request.user.username
+    user = SystemUser.objects.get(username=usrn)
+    return render(request, 'users/profile.html', {'title': 'Your profile', 'user': user})

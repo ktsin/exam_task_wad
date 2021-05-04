@@ -1,1 +1,28 @@
 {% extends "layout.html" %}
+
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+
+{% block main_content %}
+    <div class="d-flex align-items-center pt-3">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="card bg-info p-3 m-3 rounded col-md-6">
+                    <div class="card-title fs-3 fw-lighter d-flex justify-content-between">
+                        <div>Авторизация</div>
+                        <div><a class="fs-5 text-dark" href="/register/">Регистрация</a></div>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% bootstrap_form form %}
+                            {% csrf_token %}
+                            {% bootstrap_button "Войти" button_type="submit" button_class="btn-success" %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

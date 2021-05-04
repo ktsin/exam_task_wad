@@ -1,1 +1,32 @@
 {% extends "layout.html" %}
+
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+
+{% block main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 bg-light text-dark">
+                <div class="card">
+                    <div class="card-header">
+                        {{ user.name }}
+                    </div>
+                    <div class="card-body">
+                        Доступ к списку заказов: {{ user.isWorker }}
+                    </div>
+                    {% if user.isWorker %}
+                    <div class="card-footer">
+                        <a href="/checkouts/">
+                            Список на отгрузку
+                        </a>
+                        <a href="/good/">
+                            Товары
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

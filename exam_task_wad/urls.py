@@ -39,7 +39,7 @@ urlpatterns = [
 
     path('users/', main_app.views.layout_example),
     path('register/', main_app.views.layout_example),
-    path('login/', main_app.views.layout_example),
+    path('login/', main_app.views.auth_user),
     path('logout/', main_app.views.layout_example),
 
 ]

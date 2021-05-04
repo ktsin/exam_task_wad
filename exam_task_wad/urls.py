@@ -20,5 +20,26 @@ import main_app.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('layout/', main_app.views.layout_example)
+    path('layout/', main_app.views.layout_example),
+
+    # good CRUD
+    path('good/', main_app.views.layout_example),
+    path('good/add/', main_app.views.layout_example),
+    path('good/edit/<int:id>', main_app.views.layout_example),
+    path('good/delete/<int:id>', main_app.views.layout_example),
+
+    # checkout CRUD
+
+    path('checkouts/', main_app.views.layout_example),
+    path('checkouts/add/', main_app.views.layout_example),
+    path('checkouts/edit/<int:id>', main_app.views.layout_example),
+    path('checkouts/delete/<int:id>', main_app.views.layout_example),
+
+    # User manipulation
+
+    path('users/', main_app.views.layout_example),
+    path('register/', main_app.views.layout_example),
+    path('login/', main_app.views.layout_example),
+    path('logout/', main_app.views.layout_example),
+
 ]

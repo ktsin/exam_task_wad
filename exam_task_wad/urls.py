@@ -23,14 +23,14 @@ urlpatterns = [
     path('layout/', main_app.views.layout_example),
 
     # good CRUD
-    path('good/', main_app.views.layout_example),
+    path('good/', main_app.views.list_goods),
     path('good/add/', main_app.views.layout_example),
     path('good/edit/<int:id>', main_app.views.layout_example),
     path('good/delete/<int:id>', main_app.views.layout_example),
 
     # checkout CRUD
 
-    path('checkouts/', main_app.views.layout_example),
+    path('checkouts/', main_app.views.list_checkouts),
     path('checkouts/add/', main_app.views.layout_example),
     path('checkouts/edit/<int:id>', main_app.views.layout_example),
     path('checkouts/delete/<int:id>', main_app.views.layout_example),

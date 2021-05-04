@@ -1,1 +1,42 @@
 {% extends "layout.html" %}
+
+{% block main_content %}
+    <div class="container">
+        <h2>
+            На отгрузку
+        </h2>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                {% for h in header %}
+                    <td>
+                        {{ h | safe }}
+                    </td>
+                {% endfor %}
+                </thead>
+                <tbody>
+                {% for r in  g_data %}
+                    <tr>
+                        <td>
+                            {{ r.id }}
+                        </td>
+                        <td>
+                            {{ r.name }}
+                        </td>
+                        <td>
+                            {{ r.unit }}
+                        </td>
+                        <td>
+                            {{ r.price }}
+                        </td>
+                        <td>
+                            <span><a class="link-danger" href="/good/delete/{{ r.id }}">Удал.</a> | <a
+                                    class="link-warning" href="/good/edit/{{ r.id }}">Ред.</a></span>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from main_app.forms import AuthorizeForm, RegisterForm
-from main_app.models import SystemUser
+from main_app.models import SystemUser, GoodIncome, Good
 
 
 def layout_example(request):
@@ -62,3 +62,14 @@ def profile(request):
     usrn = request.user.username
     user = SystemUser.objects.get(username=usrn)
     return render(request, 'users/profile.html', {'title': 'Your profile', 'user': user})
+
+
+def list_checkouts(request):
+    header = ['Товар', 'Дата', 'Накладная', 'Действия']
+    data = GoodIncome.objects.all()
+    return render(request, 'checkouts/list.html', {'title': 'Goods income', 'header': header, 'g_data': data})
+
+def list_goods(request):
+    header = ['Айди', 'Имя', 'размер', 'цена']
+    data = Good.objects.all()
+    return render(request, 'good/list.html', {'title': 'Goods', 'header': header, 'g_data': data})
